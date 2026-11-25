@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Legends Invite</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="scene">
+
+    <h1 class="title">ML! ano tara?  </h1>
+
+    <!-- The cat asking YOU to play -->
+    <section class="character cat-inviter">
+      <div class="speech-bubble" id="inviteBubble">
+        pst.. ML na bubuhatin kita hehe
+      </div>
+
+      <img class="cat-img" id="catImg" src="images/cat-ask.png" alt="Cat asking you to play Mobile Legends" />
+
+ 
+    </section>
+
+    <!-- Your answer buttons -->
+    <section class="choices">
+      <button class="btn btn-yes" id="yesBtn">Game! </button>
+      <button class="btn btn-no" id="noBtn">Ayoko </button>
+    </section>
+    <section class="schedule hidden" id="schedule">
+  <h2 class="schedule-title">Bibigay ka rin pala hehe, Keylan ka free?</h2>
+
+  <button class="btn btn-now" id="nowBtn">Ngayon na open! </button>
+
+
+
+  <div class="picker">
+    <label for="dateTime">Date and time</label>
+    <input type="datetime-local" id="dateTime" />
+    <button class="btn btn-confirm" id="confirmBtn"> Okay set ka nalang oras para bigyan kita ng time hehe</button>
+    <p class="error hidden" id="errorMsg">Pili ka ng date and oras okay?  </p>
+  </div>
+</section>
+
+  </main>
+  <canvas id="confettiCanvas"></canvas>
+  <audio id="happySound" src="sounds/happy.mp3" preload="auto" loop></audio>
+  <audio id="crySound" src="sounds/cry.mp3" preload="auto" loop></audio>
+<audio id="evilSound" src="sounds/evil.mp3" preload="auto"></audio>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

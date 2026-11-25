@@ -1,0 +1,225 @@
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-1: #1b1740;
+  --bg-2: #3a2a7a;
+  --orange: #f4a64a;
+  --orange-dark: #d9852a;
+  --gray: #9aa3b5;
+  --gray-dark: #727b8f;
+  --pink: #ff8fa3;
+  --gold: #ffd166;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+background:
+  linear-gradient(rgba(10, 8, 30, 0.55), rgba(10, 8, 30, 0.55)),
+  url('images/ml-bg.png') center / cover no-repeat fixed;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ---------- Scene layout ---------- */
+.scene {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 16px 40px;
+}
+
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  color: var(--gold);
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.character {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: 90px; /* room for the speech bubble */
+}
+
+/* ---------- Speech bubbles ---------- */
+.speech-bubble {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  padding: 12px 16px;
+  background: #fff;
+  color: #2b2b3a;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 12px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+}
+
+/* ---------- Buttons ---------- */
+.choices {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 70px;
+  padding-bottom: 70px;
+}
+
+.btn {
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, #ffd166, #ff7b00);
+  color: #2b1a00;
+  transition: transform 0.3s ease, box-shadow 0.15s ease;
+}
+
+.btn-no {
+  background: #4a4a68;
+  color: #fff;
+  z-index: 10;
+  transition: left 0.25s ease, top 0.25s ease, transform 0.3s ease;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+  .scene { gap: 30px; }
+  .speech-bubble { width: 190px; font-size: 0.85rem; }
+  .phone { right: -22px; }
+}
+.hidden {
+  display: none !important;
+}
+
+.schedule {
+  width: min(360px, 92vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 22px;
+  backdrop-filter: blur(6px);
+  animation: pop-in 0.4s ease;
+}
+
+.schedule-title {
+  font-size: 1.3rem;
+  color: var(--gold);
+  text-align: center;
+}
+
+.or {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.picker {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.picker label {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.picker input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #2b2b3a;
+}
+
+.btn-now {
+  background: linear-gradient(135deg, #7bffb0, #00b86b);
+  color: #06301c;
+}
+
+.btn-confirm {
+  background: linear-gradient(135deg, #ffd166, #ff7b00);
+  color: #2b1a00;
+}
+
+.error {
+  color: #ff9aa8;
+  font-size: 0.9rem;
+}
+
+/* ---------- Cat image ---------- */
+.cat-img {
+  display: block;
+  width: min(260px, 70vw);
+  height: auto;
+  border-radius: 24px;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.cat-img.bounce {
+  animation: cat-bounce 0.5s ease;
+}
+
+@keyframes cat-bounce {
+  0%, 100% { transform: translateY(0); }
+  40%      { transform: translateY(-18px); }
+}
+/* ---------- Confetti ---------- */
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* clicks pass through */
+  z-index: 50;
+}
+
