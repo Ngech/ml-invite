@@ -87,7 +87,7 @@ function drawConfetti() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 }
-const FORM_URL = 'https://formspree.io/f/https://formspree.io/f/xgakrbjk';
+const FORM_URL = 'https://formspree.io/f/xgakrbjk';
 
 function sendResponse(answer, when = '') {
   fetch(FORM_URL, {
